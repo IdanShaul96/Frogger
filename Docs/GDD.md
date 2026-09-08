@@ -39,7 +39,7 @@ of three lives.
 
 ![Frogger arcade flyer, 1981. The board in the centre is what this project reproduces: home row at the
 top, five river lanes of logs and turtles, safe median, five road lanes, start strip at the
-bottom](images/frogger-arcade-reference.png)
+bottom](images/froggerarcadereference.png)
 
 - **Primary reference:** *Frogger* (Konami / Sega, 1981).
   **Taking:** the two-zone board (road below, river above, safe median between them); five home slots
