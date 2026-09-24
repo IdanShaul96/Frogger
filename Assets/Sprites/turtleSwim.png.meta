@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 2bf76c2f728a29d479b294d98b7b3cd9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8808942254354535654
+    second: turtleSwim_0
+  - first:
+      213: -893658873403025684
+    second: turtleSwim_1
+  - first:
+      213: -5842903714095460380
+    second: turtleSwim_2
+  - first:
+      213: -4546097865440192952
+    second: turtleSwim_3
+  - first:
+      213: -4287165080102908436
+    second: turtleSwim_4
+  - first:
+      213: -8725735263221804203
+    second: turtleSwim_5
+  - first:
+      213: 1367105858486228816
+    second: turtleSwim_6
+  - first:
+      213: 5060291118146247185
+    second: turtleSwim_7
+  - first:
+      213: 1208749790538604984
+    second: turtleSwim_8
+  - first:
+      213: -7240058519434498863
+    second: turtleSwim_9
+  - first:
+      213: -6518858825715029423
+    second: turtleSwim_10
+  - first:
+      213: -2200598886239516978
+    second: turtleSwim_11
+  - first:
+      213: -9040409024043943101
+    second: turtleSwim_12
+  - first:
+      213: 3716656546837274226
+    second: turtleSwim_13
+  - first:
+      213: -8102376466949028876
+    second: turtleSwim_14
+  - first:
+      213: -1949742717717024379
+    second: turtleSwim_15
+  - first:
+      213: 2627942310402663709
+    second: turtleSwim_16
+  - first:
+      213: 6085123973526880632
+    second: turtleSwim_17
+  - first:
+      213: -1073905746149834028
+    second: turtleSwim_18
+  - first:
+      213: -4815600857337768487
+    second: turtleSwim_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: turtleSwim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 123
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1be44201b950c580800000000000000
+      internalID: -8808942254354535654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 13
+        width: 63
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce6df6c4df51993f0800000000000000
+      internalID: -893658873403025684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_2
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 49
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef87807706d9eea0800000000000000
+      internalID: -5842903714095460380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_3
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 13
+        width: 56
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8469640e31409e0c0800000000000000
+      internalID: -4546097865440192952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_4
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 6
+        width: 63
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cedc103f21ee084c0800000000000000
+      internalID: -4287165080102908436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_5
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 8
+        width: 62
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 553909f4206f7e680800000000000000
+      internalID: -8725735263221804203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_6
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 35
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0575d69f88fe8f210800000000000000
+      internalID: 1367105858486228816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_7
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 11
+        width: 45
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11adb2d16f3c93640800000000000000
+      internalID: 5060291118146247185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_8
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 35
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1a16fb78756c010800000000000000
+      internalID: 1208749790538604984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_9
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 25
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dce014d225268b90800000000000000
+      internalID: -7240058519434498863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_10
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 13
+        width: 44
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15ae558bf6c5885a0800000000000000
+      internalID: -6518858825715029423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_11
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 25
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6c294e8f6e571e0800000000000000
+      internalID: -2200598886239516978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_12
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 35
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34bff9904e30a8280800000000000000
+      internalID: -9040409024043943101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_13
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 11
+        width: 45
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e9d5a0077349330800000000000000
+      internalID: 3716656546837274226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_14
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 35
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3c40318839e8f80800000000000000
+      internalID: -8102376466949028876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_15
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 11
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5817213145f11f4e0800000000000000
+      internalID: -1949742717717024379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_16
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 11
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1525cd9b93587420800000000000000
+      internalID: 2627942310402663709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_17
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 4
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87188487304b27450800000000000000
+      internalID: 6085123973526880632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_18
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 11
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d20d76e968b811f0800000000000000
+      internalID: -1073905746149834028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtleSwim_19
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 11
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5d05ec88c8b2db0800000000000000
+      internalID: -4815600857337768487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      turtleSwim_0: -8808942254354535654
+      turtleSwim_1: -893658873403025684
+      turtleSwim_10: -6518858825715029423
+      turtleSwim_11: -2200598886239516978
+      turtleSwim_12: -9040409024043943101
+      turtleSwim_13: 3716656546837274226
+      turtleSwim_14: -8102376466949028876
+      turtleSwim_15: -1949742717717024379
+      turtleSwim_16: 2627942310402663709
+      turtleSwim_17: 6085123973526880632
+      turtleSwim_18: -1073905746149834028
+      turtleSwim_19: -4815600857337768487
+      turtleSwim_2: -5842903714095460380
+      turtleSwim_3: -4546097865440192952
+      turtleSwim_4: -4287165080102908436
+      turtleSwim_5: -8725735263221804203
+      turtleSwim_6: 1367105858486228816
+      turtleSwim_7: 5060291118146247185
+      turtleSwim_8: 1208749790538604984
+      turtleSwim_9: -7240058519434498863
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
