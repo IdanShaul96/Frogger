@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8712114483938935509}
   - component: {fileID: 8588895551581099970}
+  - component: {fileID: 4918914645393811904}
   m_Layer: 6
   m_Name: Turtles3
   m_TagString: Untagged
@@ -50,6 +51,29 @@ MonoBehaviour:
   direction: {x: -1, y: 0}
   speed: 0.6
   wrapPadding: 1
+--- !u!114 &4918914645393811904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431664768828922440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d6d7e28dcaf5f4283206687c39ba2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DivingTurtles
+  swimSprites:
+  - {fileID: 7560212400656811909, guid: ae71b8c80b7feac418327df9292ac77f, type: 3}
+  - {fileID: 3769647567651841249, guid: 28421fd4dd49c71448585fee4da25de5, type: 3}
+  - {fileID: -830771486825288813, guid: f83b31dc468f0cc47ac3768aff41de26, type: 3}
+  diveSprites:
+  - {fileID: -4546097865440192952, guid: 2bf76c2f728a29d479b294d98b7b3cd9, type: 3}
+  - {fileID: -4287165080102908436, guid: 2bf76c2f728a29d479b294d98b7b3cd9, type: 3}
+  frameDuration: 0.25
+  swimDuration: 4
+  underwaterDuration: 1.5
+  startDelay: 0
 --- !u!1001 &2865426355630854249
 PrefabInstance:
   m_ObjectHideFlags: 0
