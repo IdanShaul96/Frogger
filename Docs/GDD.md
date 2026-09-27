@@ -7,9 +7,9 @@
 | **Genre** | Arcade / grid-based hazard-crossing / score-chaser |
 | **Target platform** | PC (Windows), standalone build |
 | **Engine / Unity version** | Unity 6 (6000.3.20f1), URP, 2D |
-| **Orientation & reference resolution** | Portrait, 14:16 aspect — 448 × 512 reference (14 × 16 grid of 32 px cells) |
+| **Orientation & reference resolution** | Portrait, 14:16 aspect — 224 × 256 reference (14 × 16 grid of 16 px cells) |
 | **Expected session length** | 30 seconds – 3 minutes |
-| **Document version** | v0.1 — 2026-09-08 |
+| **Document version** | v0.2 — 2026-09-27 |
 
 ---
 
@@ -60,9 +60,9 @@ bottom](images/frogger-arcade-reference.png)
 
 ### Board layout
 
-The whole game is a **14 × 16 grid** of 32 px cells — 448 × 512 reference, the 14:16 Game view aspect.
+The whole game is a **14 × 16 grid** of 16 px cells — 224 × 256 reference, the 14:16 Game view aspect.
 The grid is the game's unit of everything: one hop is one cell, one lane is one row, sprites are
-authored at 32 px and imported at PPU 32, so one cell is exactly 1 world unit.
+authored at 16 px and imported at PPU 16, so one cell is exactly 1 world unit.
 
 | Rows (top → bottom) | Contents |
 |---|---|
@@ -190,23 +190,29 @@ restart prompt is row 15–16.
 - **HUD during play:** score (top left), remaining seconds (top centre), remaining lives as small frog
   icons (top right), and the five home slots which double as progress. Deliberately absent: a pause
   button, a settings gear, any tutorial prompt, any combo or multiplier readout, and any minimap.
-- **Canvas setup:** Screen Space – Camera, CanvasScaler set to *Scale With Screen Size*, reference
-  resolution 448 × 512, match = 1 (height), so the board's vertical extent is what stays fixed —
-  a wider window adds pillarboxing, never extra board.
+- **Canvas setup:** World Space, 448 × 512 canvas units at scale 1/32, so the canvas is exactly the
+  14 × 16 board and sits on it (32 canvas units = 1 cell, 2 canvas units = 1 art pixel). The HUD is
+  therefore part of the board: it is cropped, scaled and pillarboxed together with it, and HUD row,
+  banner row and prompt row always land on board rows 1, 9 and 16. A Screen Space canvas is
+  deliberately not used — it anchors to the window corners, which are outside the pillarboxed board.
 
 ### Resolution & scaling
 
 The 14 × 16 grid is the **design** resolution, not the output resolution. The game ships as a
 1920 × 1080 window (and fullscreen at the desktop's native resolution); the board is rendered at
-448 × 512 and scaled up to fit the window's *height*, centred, with the leftover width filled by a
-black pillarbox. Nothing about the board changes with window size — a wider monitor never reveals more
+224 × 256 and scaled up to fill the window's *height* exactly, centred, with the leftover width
+filled by a black pillarbox. Nothing about the board changes with window size — a wider monitor never reveals more
 lanes, because more visible road would be a gameplay change, not a display change.
 
 Scaling is handled by the **Pixel Perfect Camera** component (URP 2D) with reference resolution
-448 × 512, PPU 32, *Upscale Render Texture* on, so the upscale is always an integer multiple
-(×2 at 1080p, 896 × 1024 of the 1080-tall window) and no pixel is ever 1.5 px wide. Non-integer
-stretching is explicitly rejected: this art is 32 px cells with 1 px detail, and uneven scaling makes
-the traffic shimmer while it moves — which reads as unfairness in a game about judging gaps.
+224 × 256, PPU 16, grid snapping *Upscale Render Texture*, crop frame *Stretch Fill*, filter
+*Retro AA*. The board is rendered pixel-perfect at 224 × 256 and that image is then stretched to the
+window height (×4.22 at 1080p, 945 × 1080), so the board always fills the screen vertically on any
+monitor. The scale is usually not a whole number, so some art pixels end up one screen pixel wider
+than others; *Retro AA* softens those seams so moving traffic does not visibly shimmer. This was
+chosen over integer-only scaling (Windowbox), which at smaller resolutions left large black borders
+above and below the board (e.g. only ×2 at 720p) — filling the screen matters more here than
+perfectly even pixels.
 
 ---
 
@@ -232,7 +238,7 @@ by me or taken from CC0 / OFL sources with the licence recorded in the table abo
 distributable as a portfolio piece. The name "Frogger" is used here as a working title only; a public
 release would ship under an original name.
 
-**Technical art rules:** Point (no filter) import, no compression, PPU 32 so one sprite cell equals
+**Technical art rules:** Point (no filter) import, no compression, PPU 16 so one sprite cell equals
 one grid cell equals 1 world unit. Single SpriteAtlas for everything in the board. Sorting layers
 back → front: `Background` → `RiverObjects` → `RoadObjects` → `Player` → `HUD`.
 
@@ -316,7 +322,7 @@ the one place where a post-MVP feature is allowed to shape the MVP's design.
 - [ ] Road zone: 5 lanes of pooled vehicles at fixed per-lane speeds, alternating directions, instant death on contact
 - [ ] River zone: 5 lanes (3 logs, 2 turtle groups), ride-along velocity inheritance, death in open water
 - [ ] `Rideable.IsSafe` queried every frame by the player, hardcoded `true` — the seam the dive plugs into
-- [ ] Pixel Perfect Camera at 448 × 512 / PPU 32, integer upscale with pillarboxing in a 1920 × 1080 window
+- [ ] Pixel Perfect Camera at 224 × 256 / PPU 16, stretched to the window height with pillarboxing in a 1920 × 1080 window
 - [ ] Home row: 5 slots, fill detection, death on hedge or on an occupied slot
 - [ ] Lives (3), per-life 30-second timer, death → respawn loop
 - [ ] Scoring: forward-row progress, home-slot bonus, remaining-time bonus
@@ -352,3 +358,4 @@ the one place where a post-MVP feature is allowed to shape the MVP's design.
 | Version | Date | Change |
 |---|---|---|
 | v0.1 | 2026-09-08 | Initial draft |
+| v0.2 | 2026-09-27 | Art is 16 px cells: reference resolution 224 × 256, PPU 16 (one cell is still 1 world unit). HUD canvas moved to World Space sized to the board. Scaling changed from integer-only to Stretch Fill (fit height, Retro AA) |
