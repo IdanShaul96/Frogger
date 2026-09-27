@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7541030042124250849}
-  - component: {fileID: 2486369798910900649}
   - component: {fileID: 7100000000000000002}
   m_Layer: 6
   m_Name: 4Logs
@@ -37,7 +36,7 @@ Transform:
   - {fileID: 5611610902309834843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2486369798910900649
+--- !u!114 &7100000000000000002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,12 +45,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3160653830785864808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d52b7b3099dca47b9c5a043680a865, type: 3}
+  m_Script: {fileID: 11500000, guid: ccfefff1f0fb4c3784d8723e5bd3c761, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovingPatterns
-  direction: {x: 1, y: 0}
-  speed: 4
-  wrapPadding: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Rideable
 --- !u!1 &5287824158064911902
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,15 +600,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.875, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &7100000000000000002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160653830785864808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccfefff1f0fb4c3784d8723e5bd3c761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rideable

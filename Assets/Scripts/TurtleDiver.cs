@@ -1,21 +1,21 @@
 using UnityEngine;
-using System.Collections;
 
 // Drives one turtle group's surfaced -> warning -> submerged cycle.
-// Put it on a turtle group (Turtles2 / Turtles3) next to its Rideable.
+// The timings come from GameConfig; the LaneController that owns the group sets its start delay.
+// Driven by a clock rather than a coroutine, so the cycle survives the group being recycled by the pool.
 [RequireComponent(typeof(Rideable))]
 public class TurtleDiver : MonoBehaviour
 {
     [SerializeField] private Sprite[] swimSprites;
     [SerializeField] private Sprite[] diveSprites;
     [SerializeField] private float frameDuration = 0.25f;
-    [SerializeField] private float safeTime = 5f;
-    [SerializeField] private float warningTime = 1.5f;
-    [SerializeField] private float diveTime = 2f;
-    [SerializeField] private float startDelay;
 
     private SpriteRenderer[] _renderers;
     private Rideable _rideable;
+    private GameConfig _config;
+    private float _startDelay;
+    private float _clock;
+    private bool _isSubmerged;
 
     private void Awake()
     {
@@ -23,46 +23,69 @@ public class TurtleDiver : MonoBehaviour
         _rideable = GetComponent<Rideable>();
     }
 
-    private void Start()
+    public void Configure(GameConfig config, float startDelay)
     {
-        StartCoroutine(DiveCycle());
+        _config = config;
+        _startDelay = startDelay;
+        _clock = 0f;
     }
 
-    private IEnumerator DiveCycle()
+    private void Update()
     {
-        yield return new WaitForSeconds(startDelay);
+        if (_config == null) return;
 
-        while (true)
+        _clock += Time.deltaTime;
+        float time = _clock - _startDelay;
+        if (time < 0f)
         {
-            // Surfaced and safe
-            int frame = 0;
-            for (float elapsed = 0f; elapsed < safeTime; elapsed += frameDuration)
-            {
-                SetSprite(swimSprites[frame % swimSprites.Length]);
-                frame++;
-                yield return new WaitForSeconds(frameDuration);
-            }
-
-            // Warning: half-submerged, still safe to stand on
-            float warningFrameDuration = warningTime / diveSprites.Length;
-            foreach (Sprite sprite in diveSprites)
-            {
-                SetSprite(sprite);
-                yield return new WaitForSeconds(warningFrameDuration);
-            }
-
-            // Fully submerged: this group counts as open water
-            SetSubmerged(true);
-            yield return new WaitForSeconds(diveTime);
-            SetSubmerged(false);
-
-            // Resurface: dive frames in reverse, already safe
-            for (int i = diveSprites.Length - 1; i >= 0; i--)
-            {
-                SetSprite(diveSprites[i]);
-                yield return new WaitForSeconds(frameDuration);
-            }
+            Swim();
+            return;
         }
+
+        float resurfaceTime = diveSprites.Length * frameDuration;
+        float cycle = _config.turtleSafeTime + _config.turtleWarningTime + _config.turtleDiveTime + resurfaceTime;
+        time %= cycle;
+
+        // Surfaced and safe
+        if (time < _config.turtleSafeTime)
+        {
+            Swim();
+            return;
+        }
+        time -= _config.turtleSafeTime;
+
+        // Warning: half-submerged, still safe to stand on
+        if (time < _config.turtleWarningTime)
+        {
+            float warningFrameDuration = _config.turtleWarningTime / diveSprites.Length;
+            SetSubmerged(false);
+            SetSprite(diveSprites[Frame(time, warningFrameDuration)]);
+            return;
+        }
+        time -= _config.turtleWarningTime;
+
+        // Fully submerged: this group counts as open water
+        if (time < _config.turtleDiveTime)
+        {
+            SetSubmerged(true);
+            return;
+        }
+        time -= _config.turtleDiveTime;
+
+        // Resurface: dive frames in reverse, already safe
+        SetSubmerged(false);
+        SetSprite(diveSprites[diveSprites.Length - 1 - Frame(time, frameDuration)]);
+    }
+
+    private void Swim()
+    {
+        SetSubmerged(false);
+        SetSprite(swimSprites[(int)(_clock / frameDuration) % swimSprites.Length]);
+    }
+
+    private int Frame(float time, float duration)
+    {
+        return Mathf.Min((int)(time / duration), diveSprites.Length - 1);
     }
 
     private void SetSprite(Sprite sprite)
@@ -75,6 +98,9 @@ public class TurtleDiver : MonoBehaviour
 
     private void SetSubmerged(bool submerged)
     {
+        if (submerged == _isSubmerged) return;
+
+        _isSubmerged = submerged;
         _rideable.IsSafe = !submerged;
 
         foreach (SpriteRenderer spriteRenderer in _renderers)

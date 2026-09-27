@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3197742846487593061}
-  - component: {fileID: -3221098305820640287}
   - component: {fileID: 6081096098224975032}
   - component: {fileID: 7100000000000000004}
   m_Layer: 6
@@ -36,21 +35,6 @@ Transform:
   - {fileID: 4556645572260522142}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3221098305820640287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532342688862220871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d52b7b3099dca47b9c5a043680a865, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovingPatterns
-  direction: {x: -1, y: 0}
-  speed: 0.6
-  wrapPadding: 1
 --- !u!114 &6081096098224975032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,9 +55,18 @@ MonoBehaviour:
   - {fileID: -4546097865440192952, guid: 2bf76c2f728a29d479b294d98b7b3cd9, type: 3}
   - {fileID: -4287165080102908436, guid: 2bf76c2f728a29d479b294d98b7b3cd9, type: 3}
   frameDuration: 0.25
-  swimDuration: 4
-  underwaterDuration: 1.5
-  startDelay: 0
+--- !u!114 &7100000000000000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532342688862220871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfefff1f0fb4c3784d8723e5bd3c761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rideable
 --- !u!1001 &7601441827461919586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,15 +191,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5966299287982293596, guid: 08523e4fa30a7fe40a09126a17f9d80a, type: 3}
   m_PrefabInstance: {fileID: 7922105067910998722}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7100000000000000004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532342688862220871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccfefff1f0fb4c3784d8723e5bd3c761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rideable

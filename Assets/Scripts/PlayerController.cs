@@ -236,7 +236,7 @@ public class PlayerController : MonoBehaviour
     // Moving obstacles are vehicles; the only still obstacle is the water.
     private static bool IsWater(Collider2D obstacle)
     {
-        return obstacle.GetComponentInParent<MovingPatterns>() == null;
+        return obstacle.GetComponentInParent<LaneController>() == null;
     }
 
     public void Death(bool drowned = false)

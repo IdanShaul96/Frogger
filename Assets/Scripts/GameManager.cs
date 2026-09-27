@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerController _player;
     private HomeRow _homeRow;
-    private MovingPatterns[] _lanes;
+    private LaneController[] _lanes;
     private UIManager _ui;
     private AudioManager _audio;
     private ScreenShake _screenShake;
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         _homeRow = new HomeRow(FindObjectsByType<Home>(FindObjectsSortMode.None));
         _player = FindAnyObjectByType<PlayerController>();
-        _lanes = FindObjectsByType<MovingPatterns>(FindObjectsSortMode.None);
+        _lanes = FindObjectsByType<LaneController>(FindObjectsSortMode.None);
         _ui = GetComponent<UIManager>();
         _audio = GetComponent<AudioManager>();
 
@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
 
     private void SetLaneSpeedMultiplier(float multiplier)
     {
-        foreach (MovingPatterns lane in _lanes)
+        foreach (LaneController lane in _lanes)
         {
             lane.SetSpeedMultiplier(multiplier);
         }

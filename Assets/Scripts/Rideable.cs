@@ -4,14 +4,14 @@ using UnityEngine;
 // The frog asks it for its velocity and whether it is safe to stand on.
 public class Rideable : MonoBehaviour
 {
-    private MovingPatterns _movingPatterns;
+    private LaneController _lane;
 
     public bool IsSafe { get; set; } = true;
 
-    public Vector3 Velocity => _movingPatterns != null ? _movingPatterns.Velocity : Vector3.zero;
+    public Vector3 Velocity => _lane != null ? _lane.Velocity : Vector3.zero;
 
     private void Awake()
     {
-        _movingPatterns = GetComponent<MovingPatterns>();
+        _lane = GetComponentInParent<LaneController>();
     }
 }

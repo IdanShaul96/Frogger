@@ -21,6 +21,11 @@ public class GameConfig : ScriptableObject
     public int perLifeTimer = 30;
     public int timerWarningSeconds = 5;
 
+    [Header("Turtles")]
+    public float turtleSafeTime = 5f;
+    public float turtleWarningTime = 1.5f;
+    public float turtleDiveTime = 2f;
+
     [Header("Scoring")]
     public int rowScore = 10;
     public int homeScore = 50;
