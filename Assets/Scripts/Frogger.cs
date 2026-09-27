@@ -32,7 +32,7 @@ public class Frogger : MonoBehaviour
 
     private void Update()
     {
-        if (transform.parent != null && IsTouchingScreenEdge())
+        if (transform.parent != null && IsOffScreen())
         {
             Death();
             return;
@@ -67,7 +67,7 @@ public class Frogger : MonoBehaviour
    {
        Vector3 destination = transform.position + direction;
        Collider2D barrier = Physics2D.OverlapBox(destination, Vector2.zero, 0f, LayerMask.GetMask(("Barrier")));
-       Collider2D platform = Physics2D.OverlapBox(destination, Vector2.zero, 0f, LayerMask.GetMask(("Platform")));
+       Collider2D platform = Physics2D.OverlapBox(destination, new Vector2(0.25f, 0.25f), 0f, LayerMask.GetMask(("Platform")));
        Collider2D obstacle = Physics2D.OverlapBox(destination, Vector2.zero, 0f, LayerMask.GetMask(("Obstacle")));
 
        if (barrier != null)
@@ -121,11 +121,10 @@ public class Frogger : MonoBehaviour
        _isLeaping = false;
    }
 
-   private bool IsTouchingScreenEdge()
+   private bool IsOffScreen()
    {
-       float halfWidth = _spriteRenderer.bounds.extents.x;
-       return transform.position.x - halfWidth < _leftEdgeX ||
-              transform.position.x + halfWidth > _rightEdgeX;
+       return transform.position.x < _leftEdgeX ||
+              transform.position.x > _rightEdgeX;
    }
 
    public void Death()
