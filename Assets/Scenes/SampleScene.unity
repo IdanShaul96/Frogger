@@ -490,6 +490,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4918914645393811904, guid: 0500d7ee9acb4d9489ef8ceacd054306, type: 3}
+      propertyPath: startDelay
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5431664768828922440, guid: 0500d7ee9acb4d9489ef8ceacd054306, type: 3}
       propertyPath: m_Name
       value: Turtles3 (2)
@@ -590,6 +594,10 @@ PrefabInstance:
     - target: {fileID: 3197742846487593061, guid: 5f9c11756445ef747b8fc098be6950e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081096098224975032, guid: 5f9c11756445ef747b8fc098be6950e5, type: 3}
+      propertyPath: startDelay
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2424,6 +2432,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4918914645393811904, guid: 0500d7ee9acb4d9489ef8ceacd054306, type: 3}
+      propertyPath: startDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5431664768828922440, guid: 0500d7ee9acb4d9489ef8ceacd054306, type: 3}
       propertyPath: m_Name
       value: Turtles3 (1)
@@ -3066,6 +3078,10 @@ PrefabInstance:
     - target: {fileID: 3197742846487593061, guid: 5f9c11756445ef747b8fc098be6950e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081096098224975032, guid: 5f9c11756445ef747b8fc098be6950e5, type: 3}
+      propertyPath: startDelay
+      value: 3.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4313,6 +4329,10 @@ PrefabInstance:
     - target: {fileID: 3197742846487593061, guid: 5f9c11756445ef747b8fc098be6950e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081096098224975032, guid: 5f9c11756445ef747b8fc098be6950e5, type: 3}
+      propertyPath: startDelay
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
