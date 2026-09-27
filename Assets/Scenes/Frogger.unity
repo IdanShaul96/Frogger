@@ -906,10 +906,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.25364584
+    x: 0
     y: 0
-    width: 0.49218753
-    height: 1
+    width: 0.9988208
+    height: 0.99999994
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -1134,8 +1134,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1889745572
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7802585394972216754, guid: 3f77a5dc8bcc28c4cb979d73d508f841, type: 3}
@@ -1226,8 +1226,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1889745572
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6049605792901559095, guid: 402517dded5b0dc42a9d5330af865275, type: 3}
@@ -1363,8 +1363,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1889745572
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7011661911796687584, guid: b029a7d880c270f43a1f2f697fcf8560, type: 3}
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000a43aa3706fff1e01a8215f35e4f3c118b9471569
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1844,9 +1844,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 415364068
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3270137680221168986, guid: 82bac698363dc96488ede5a2d8ecedae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1940,10 +1940,19 @@ MonoBehaviour:
   - {fileID: 1070347154}
   timerWarningColor: {r: 1, g: 0, b: 0, a: 1}
   gameOverMenu: {fileID: 241183691}
+  gameOverPrompt: {fileID: 1044719327}
   gameOverHighScoreText: {fileID: 432336016}
   titleMenu: {fileID: 277745159}
   titlePrompt: {fileID: 1672785229}
   highScoreText: {fileID: 636214347}
+  gameOverColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  gameOverColorInterval: 0.1
 --- !u!114 &831612092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,8 +2164,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1889745572
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7802585394972216754, guid: 3f77a5dc8bcc28c4cb979d73d508f841, type: 3}
@@ -3627,8 +3636,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingLayerID: 1763002297
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1923323489
 RectTransform:

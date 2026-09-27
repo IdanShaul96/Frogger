@@ -246,7 +246,7 @@ back → front: `Background` → `RiverObjects` → `RoadObjects` → `Player` �
 
 ## 7. Technical Design
 
-**Scenes:** one scene, `Game.unity`. Title, play and game over are states inside it, not scenes —
+**Scenes:** one scene, `Frogger.unity`. Title, play and game over are states inside it, not scenes —
 restart resets state rather than reloading, so the lanes keep running behind the game-over overlay.
 
 **Packages / systems used:** Input System (new), Physics2D (triggers only — no rigidbody simulation

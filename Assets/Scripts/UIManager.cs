@@ -15,24 +15,66 @@ public class UIManager : MonoBehaviour
 
     [Header("Overlays")]
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject gameOverPrompt;
     [SerializeField] private TMP_Text gameOverHighScoreText;
     [SerializeField] private GameObject titleMenu;
     [SerializeField] private GameObject titlePrompt;
     [SerializeField] private TMP_Text highScoreText;
 
+    [Header("Game over flash")]
+    [Tooltip("Score and HI-SCORE cycle through these together on the game-over screen.")]
+    [SerializeField] private Color[] gameOverColors =
+    {
+        Color.white, Color.yellow, Color.red, Color.cyan, Color.magenta, Color.green
+    };
+    [SerializeField] private float gameOverColorInterval = 0.1f;
+
     private Color _timeColor;
+    private Color _scoreColor;
+    private Color _gameOverHighScoreColor;
     private bool _isTitleShown;
+    private bool _isGameOverShown;
+
+    // Unscaled, because the board is frozen with timeScale 0 on game over.
+    private static bool IsBlinkOn => Mathf.Repeat(Time.unscaledTime, PromptBlinkPeriod) < PromptBlinkPeriod / 2f;
 
     private void Awake()
     {
         _timeColor = timeText.color;
+        _scoreColor = scoreText.color;
+        if (gameOverHighScoreText != null)
+        {
+            _gameOverHighScoreColor = gameOverHighScoreText.color;
+        }
     }
 
     private void Update()
     {
         if (_isTitleShown && titlePrompt != null)
         {
-            titlePrompt.SetActive(Mathf.Repeat(Time.unscaledTime, PromptBlinkPeriod) < PromptBlinkPeriod / 2f);
+            titlePrompt.SetActive(IsBlinkOn);
+        }
+
+        if (_isGameOverShown)
+        {
+            if (gameOverPrompt != null)
+            {
+                gameOverPrompt.SetActive(IsBlinkOn);
+            }
+            FlashGameOverColors();
+        }
+    }
+
+    private void FlashGameOverColors()
+    {
+        if (gameOverColors.Length == 0) return;
+
+        int index = (int)(Time.unscaledTime / gameOverColorInterval) % gameOverColors.Length;
+        Color color = gameOverColors[index];
+        scoreText.color = color;
+        if (gameOverHighScoreText != null)
+        {
+            gameOverHighScoreText.color = color;
         }
     }
 
@@ -59,6 +101,7 @@ public class UIManager : MonoBehaviour
     public void ShowTitle(int highScore)
     {
         _isTitleShown = true;
+        _isGameOverShown = false;
         gameOverMenu.SetActive(false);
 
         if (titleMenu != null)
@@ -73,6 +116,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameOver(int highScore)
     {
+        _isGameOverShown = true;
         gameOverMenu.SetActive(true);
 
         if (gameOverHighScoreText != null)
@@ -84,7 +128,13 @@ public class UIManager : MonoBehaviour
     public void HideOverlays()
     {
         _isTitleShown = false;
+        _isGameOverShown = false;
         gameOverMenu.SetActive(false);
+        scoreText.color = _scoreColor;
+        if (gameOverHighScoreText != null)
+        {
+            gameOverHighScoreText.color = _gameOverHighScoreColor;
+        }
 
         if (titleMenu != null)
         {
