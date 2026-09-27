@@ -1965,15 +1965,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5a5d6a424642ada573e37c0ce0b70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  hop: {fileID: 0}
-  splash: {fileID: 0}
-  squash: {fileID: 0}
+  hop: {fileID: 8300000, guid: 2e0a0e897af8ee94a8070f6ea08ea3c4, type: 3}
+  splash: {fileID: 8300000, guid: b804b163d577c4b4da6ccb4ee1f3b8bf, type: 3}
+  squash: {fileID: 8300000, guid: b804b163d577c4b4da6ccb4ee1f3b8bf, type: 3}
   homeFilled: {fileID: 0}
-  roundClear: {fileID: 0}
-  gameOver: {fileID: 0}
+  roundClear: {fileID: 8300000, guid: 1612ca64fbfc65f4689af6bbbd8ec330, type: 3}
+  gameOver: {fileID: 8300000, guid: 106599d4f8eec4b4ba9f1f77ee356514, type: 3}
   timerLow: {fileID: 0}
-  titleMusic: {fileID: 0}
-  gameplayMusic: {fileID: 0}
+  titleMusic: {fileID: 8300000, guid: bc160bcdbdf2723499cd812b31ff216e, type: 3}
+  gameplayMusic: {fileID: 8300000, guid: bc160bcdbdf2723499cd812b31ff216e, type: 3}
 --- !u!1 &881701332
 GameObject:
   m_ObjectHideFlags: 0

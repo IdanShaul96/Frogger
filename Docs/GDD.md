@@ -227,14 +227,14 @@ perfectly even pixels.
 | Board background | 1 tiled image: home hedge, river, median, road, start row | Self-made pixel art / CC0 | Static backdrop |
 | Home slot marker | 1 frame (empty), 1 frame (filled frog) | Self-made pixel art / CC0 | Home row + progress |
 | HUD font | Bitmap arcade font, digits + uppercase | Open-licence pixel font (e.g. *Press Start 2P*, OFL) | Score, timer, prompts |
-| SFX | hop, splash, squash, home-filled, round-clear, game-over, timer-low warning | Self-made / CC0 (freesound) | Feedback |
-| Music | 1 short loop (title), 1 short loop (play) | CC0 | Ambience |
+| SFX | hop, splash, squash, home-filled, round-clear, game-over, timer-low warning | [Pixabay sound effects](https://pixabay.com/sound-effects/), Pixabay Content License | Feedback |
+| Music | 1 short loop (title), 1 short loop (play) | [Pixabay sound effects](https://pixabay.com/sound-effects/), Pixabay Content License | Ambience |
 
 **Licence note:** *Frogger* is a trademark of Konami, and the original arcade sprites and audio are
 copyrighted. Nothing from the 1981 ROM ships in the game. The one exception in this repository is the
 reference image in §2 — that is the original arcade flyer, reproduced here to identify what is being
 studied, and it is not a game asset and is not loaded by the build. All art and audio in this project are either drawn
-by me or taken from CC0 / OFL sources with the licence recorded in the table above, so the build is
+by me or taken from CC0 / OFL / Pixabay Content License sources with the licence recorded in the table above, so the build is
 distributable as a portfolio piece. The name "Frogger" is used here as a working title only; a public
 release would ship under an original name.
 
