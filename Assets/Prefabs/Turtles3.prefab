@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8712114483938935509}
   - component: {fileID: 8588895551581099970}
   - component: {fileID: 4918914645393811904}
+  - component: {fileID: 7100000000000000005}
   m_Layer: 6
   m_Name: Turtles3
   m_TagString: Untagged
@@ -260,3 +261,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5966299287982293596, guid: 08523e4fa30a7fe40a09126a17f9d80a, type: 3}
   m_PrefabInstance: {fileID: 6918627204463996720}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7100000000000000005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431664768828922440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfefff1f0fb4c3784d8723e5bd3c761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rideable

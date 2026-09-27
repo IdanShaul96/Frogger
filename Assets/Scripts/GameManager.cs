@@ -1,147 +1,289 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
-using TMPro;
+
+// Owns the game state machine, score, lives and the per-life timer.
 public class GameManager : MonoBehaviour
 {
-    private Frogger _frogger;
-    private Home[] _homes;
+    private enum GameState
+    {
+        Title,
+        Playing,
+        LifeLost,
+        RoundClear,
+        GameOver
+    }
+
+    private const string HighScoreKey = "HighScore";
+
+    [SerializeField] private GameConfig config;
+
+    private PlayerController _player;
+    private HomeRow _homeRow;
+    private MovingPatterns[] _lanes;
+    private UIManager _ui;
+    private AudioManager _audio;
+    private ScreenShake _screenShake;
+
+    private GameState _state;
     private int _score;
     private int _lives;
     private int _time;
-    public GameObject GameOverMenu;
-    [SerializeField] private TMP_Text scoreText;
-    [SerializeField] private TMP_Text timeText;
-    [SerializeField] private TMP_Text livesText;
+    private int _highScore;
+    private int _round;
+    private float _gameOverTime;
+    private Coroutine _timerRoutine;
+
+    public GameConfig Config => config;
+
     private void Awake()
     {
-        _homes = FindObjectsByType<Home>(FindObjectsSortMode.None);
-        _frogger = FindAnyObjectByType<Frogger>();
+        _homeRow = new HomeRow(FindObjectsByType<Home>(FindObjectsSortMode.None));
+        _player = FindAnyObjectByType<PlayerController>();
+        _lanes = FindObjectsByType<MovingPatterns>(FindObjectsSortMode.None);
+        _ui = GetComponent<UIManager>();
+        _audio = GetComponent<AudioManager>();
+
+        Camera mainCamera = Camera.main;
+        _screenShake = mainCamera.GetComponent<ScreenShake>();
+        if (_screenShake == null)
+        {
+            _screenShake = mainCamera.gameObject.AddComponent<ScreenShake>();
+        }
+
+        _highScore = PlayerPrefs.GetInt(HighScoreKey, 0);
     }
-    
+
     private void Start()
     {
-        NewGame();
+        EnterTitle();
+    }
+
+    private void Update()
+    {
+        switch (_state)
+        {
+            case GameState.Title:
+                HandleMenuInput();
+                break;
+            case GameState.GameOver:
+                if (Time.unscaledTime - _gameOverTime >= config.restartLockout)
+                {
+                    HandleMenuInput();
+                }
+                break;
+        }
+    }
+
+    private void HandleMenuInput()
+    {
+        if (StartPressed())
+        {
+            NewGame();
+        }
+        else if (QuitPressed())
+        {
+            Quit();
+        }
+    }
+
+    private static bool StartPressed()
+    {
+        Keyboard keyboard = Keyboard.current;
+        Gamepad gamepad = Gamepad.current;
+        return (keyboard != null && (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame)) ||
+               (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame);
+    }
+
+    private static bool QuitPressed()
+    {
+        Keyboard keyboard = Keyboard.current;
+        return keyboard != null && keyboard.escapeKey.wasPressedThisFrame;
+    }
+
+    private static void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    private void EnterTitle()
+    {
+        _state = GameState.Title;
+        Time.timeScale = 1f;
+        _player.gameObject.SetActive(false);
+        _homeRow.Clear();
+        SetScore(0);
+        SetLives(config.startingLives);
+        SetTime(config.perLifeTimer);
+        _ui.ShowTitle(_highScore);
+        _audio.PlayTitleMusic();
     }
 
     private void NewGame()
     {
-        GameOverMenu.SetActive(false);
+        Time.timeScale = 1f;
+        _round = 0;
+        SetLaneSpeedMultiplier(1f);
         SetScore(0);
-        SetLives(3);
-        NewLevel();
-    }
-    private void NewLevel()
-    {
-        foreach (Home home in _homes)
-        {
-            home.enabled = false;
-        }
+        SetLives(config.startingLives);
+        _ui.HideOverlays();
+        _audio.PlayGameplayMusic();
+        _homeRow.Clear();
         Respawn();
     }
 
     private void Respawn()
     {
-        _frogger.Respawn();
-        StopAllCoroutines();
-        StartCoroutine(Timer(30));
+        _state = GameState.Playing;
+        _player.Respawn();
+        StopTimer();
+        _timerRoutine = StartCoroutine(Timer());
     }
 
-    private IEnumerator Timer(int duration)
+    private IEnumerator Timer()
     {
-        SetTime(duration);
+        SetTime(config.perLifeTimer);
         while (_time > 0)
         {
             yield return new WaitForSeconds(1);
             SetTime(_time - 1);
         }
-        _frogger.Death();
+        _player.Death();
     }
 
-    public void Died()
+    private void StopTimer()
     {
-        StopAllCoroutines();
+        if (_timerRoutine != null)
+        {
+            StopCoroutine(_timerRoutine);
+            _timerRoutine = null;
+        }
+    }
+
+    public void Died(bool drowned)
+    {
+        if (_state != GameState.Playing) return;
+
+        _state = GameState.LifeLost;
+        StopTimer();
         SetLives(_lives - 1);
+        _audio.PlayDeath(drowned);
+        _screenShake.Shake();
+        StartCoroutine(AfterDeath());
+    }
+
+    private IEnumerator AfterDeath()
+    {
+        yield return new WaitForSeconds(config.deathAnimDuration);
 
         if (_lives > 0)
         {
-            Invoke(nameof(Respawn), 1f);
+            Respawn();
         }
         else
         {
-            Invoke(nameof(GameOver), 1f);
+            GameOver();
         }
     }
 
     private void GameOver()
-    {   
-        _frogger.gameObject.SetActive(false);
-        GameOverMenu.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(Retry());
+    {
+        _state = GameState.GameOver;
+        _gameOverTime = Time.unscaledTime;
+        Time.timeScale = 0f;
+
+        if (_score > _highScore)
+        {
+            _highScore = _score;
+            PlayerPrefs.SetInt(HighScoreKey, _highScore);
+            PlayerPrefs.Save();
+        }
+
+        _ui.ShowGameOver(_highScore);
+        _audio.StopMusic();
+        _audio.PlayGameOver();
     }
 
-    private IEnumerator Retry()
-    {
-        bool playingAgain = false;
-        while (!playingAgain)
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                playingAgain = true;
-            }
-            
-            yield return null;
-        }
-        NewGame();
-    }
     public void HomeHasBeenOccupied()
     {
-        var extraPointsForTime = _time * 20;
-        StopAllCoroutines();
-        _frogger.gameObject.SetActive(false);
-        SetScore((_score + 50 + extraPointsForTime));
+        if (_state != GameState.Playing) return;
 
-        if (LevelCleared())
+        StopTimer();
+        _player.gameObject.SetActive(false);
+        _audio.PlayHomeFilled();
+        SetScore(_score + config.homeScore + _time * config.timeBonusPerSecond);
+
+        if (_homeRow.IsFull)
         {
-            SetScore((_score + 500));
-            Invoke(nameof(NewLevel),1f);
+            StartCoroutine(RoundClear());
         }
         else
         {
-            Invoke(nameof(Respawn),1f);
+            StartCoroutine(RespawnAfterHome());
         }
     }
 
-    private bool LevelCleared()
+    // The frog must be gone for a moment before it respawns, or the home it just
+    // filled sees it again and counts it as jumping into an occupied slot.
+    private IEnumerator RespawnAfterHome()
     {
-        foreach (Home home in _homes)
-        {
-            if (!home.enabled)
-            {
-                return false;
-            }
-        }
+        yield return new WaitForSeconds(config.homeRespawnDelay);
+        Respawn();
+    }
 
-        return true;
-    }
-    private void SetScore(int score)
+    private IEnumerator RoundClear()
     {
-        _score = score;
-        scoreText.text = _score.ToString();
-    }
-    private void SetLives(int lives)
-    {
-        _lives = lives;
-        livesText.text = _lives.ToString();
-    }
-    private void SetTime(int time)
-    {
-        _time = time;
-        timeText.text = _time.ToString();
+        _state = GameState.RoundClear;
+        SetScore(_score + config.roundClearBonus);
+        _audio.PlayRoundClear();
+
+        yield return _homeRow.Flash(config.roundClearFlashDuration);
+
+        _homeRow.Clear();
+        _round++;
+        SetLaneSpeedMultiplier(Mathf.Pow(config.roundSpeedMultiplier, _round));
+        Respawn();
     }
 
     public void AdvancedRow()
     {
-        SetScore(_score + 10);
+        if (_state != GameState.Playing) return;
+
+        SetScore(_score + config.rowScore);
+    }
+
+    private void SetLaneSpeedMultiplier(float multiplier)
+    {
+        foreach (MovingPatterns lane in _lanes)
+        {
+            lane.SetSpeedMultiplier(multiplier);
+        }
+    }
+
+    private void SetScore(int score)
+    {
+        _score = score;
+        _ui.SetScore(_score);
+    }
+
+    private void SetLives(int lives)
+    {
+        _lives = lives;
+        _ui.SetLives(_lives);
+    }
+
+    private void SetTime(int time)
+    {
+        _time = time;
+        _ui.SetTime(_time, _time <= config.timerWarningSeconds);
+
+        if (_state == GameState.Playing && _time == config.timerWarningSeconds)
+        {
+            _audio.PlayTimerLow();
+        }
     }
 }

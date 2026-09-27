@@ -8,15 +8,28 @@ public class MovingPatterns : MonoBehaviour
 
     
     private float halfWidth;
-    private Vector3 leftEdge;
-    private Vector3 rightEdge;
+    private float leftEdgeX;
+    private float rightEdgeX;
+    private float _speedMultiplier = 1f;
+
+    public Vector3 Velocity => transform.TransformDirection(direction * CurrentSpeed);
+
+    private float CurrentSpeed => speed * _speedMultiplier;
+
+    // Rounds get faster: GameManager scales every lane when all five homes are filled.
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        _speedMultiplier = multiplier;
+    }
 
     private void Start()
     {
         halfWidth = CalculateHalfWidth() + wrapPadding;
         
-        leftEdge  = Camera.main.ViewportToWorldPoint(Vector3.zero);
-        rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
+        // Wrap at the board edges, not the camera edges, so a wider screen never changes the lanes.
+        GameConfig config = FindAnyObjectByType<GameManager>().Config;
+        leftEdgeX = config.BoardLeftX;
+        rightEdgeX = config.BoardRightX;
     }
 
     private float CalculateHalfWidth()
@@ -40,19 +53,19 @@ public class MovingPatterns : MonoBehaviour
 
     private void Update()
     {
-        if (direction.x > 0f && transform.position.x - halfWidth > rightEdge.x)
+        if (direction.x > 0f && transform.position.x - halfWidth > rightEdgeX)
         {
             Vector3 position = transform.position;
-            position.x = leftEdge.x - halfWidth;
+            position.x = leftEdgeX - halfWidth;
             transform.position = position;
         }
-        else if (direction.x < 0f && transform.position.x + halfWidth < leftEdge.x)
+        else if (direction.x < 0f && transform.position.x + halfWidth < leftEdgeX)
         {
             Vector3 position = transform.position;
-            position.x = rightEdge.x + halfWidth;
+            position.x = rightEdgeX + halfWidth;
             transform.position = position;
         }
 
-        transform.Translate(direction * (speed * Time.deltaTime));
+        transform.Translate(direction * (CurrentSpeed * Time.deltaTime));
     }
 }

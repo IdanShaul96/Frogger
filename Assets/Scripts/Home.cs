@@ -18,12 +18,12 @@ public class Home : MonoBehaviour
      {
          if (other.CompareTag("Player"))
          {
-             Frogger frogger = other.GetComponent<Frogger>();
-             if (!frogger.enabled) return;
+             PlayerController player = other.GetComponent<PlayerController>();
+             if (!player.enabled) return;
 
              if (enabled)
              {
-                 frogger.Death();
+                 player.Death();
                  return;
              }
 
