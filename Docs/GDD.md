@@ -220,23 +220,25 @@ perfectly even pixels.
 
 | Asset | Variants / frames | Source & licence | Use |
 |---|---|---|---|
-| Frog | 2 frames (idle, mid-hop) × 4 facings, + 3-frame death | Self-made pixel art / CC0 arcade-style pack | Player |
-| Vehicles | 4 types (truck, car, tractor, race car), 1 frame each, 2 facings | Self-made pixel art / CC0 | Road hazards |
-| Log | 3 lengths (2, 3, 4 cells), 1 frame each | Self-made pixel art / CC0 | River platforms |
-| Turtle | 1 cell, 2-frame paddle loop, 2-frame half-submerged warning, 1 frame fully submerged | Self-made pixel art / CC0 | River platforms, in groups of 2–3 |
-| Board background | 1 tiled image: home hedge, river, median, road, start row | Self-made pixel art / CC0 | Static backdrop |
-| Home slot marker | 1 frame (empty), 1 frame (filled frog) | Self-made pixel art / CC0 | Home row + progress |
-| HUD font | Bitmap arcade font, digits + uppercase | Open-licence pixel font (e.g. *Press Start 2P*, OFL) | Score, timer, prompts |
+| Frog | 2 frames (idle, mid-hop) × 4 facings, + 3-frame death | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Player |
+| Vehicles | 4 types (truck, car, tractor, race car), 1 frame each, 2 facings | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Road hazards |
+| Log | 3 lengths (2, 3, 4 cells), 1 frame each | Zigurous Frogger tutorial, by Zigurous (no licence stated) | River platforms |
+| Turtle | 1 cell, 2-frame paddle loop, 2-frame half-submerged warning, 1 frame fully submerged | Zigurous Frogger tutorial, by Zigurous (no licence stated) | River platforms, in groups of 2–3 |
+| Board background | 1 tiled image: home hedge, river, median, road, start row | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Static backdrop |
+| Home slot marker | 1 frame (empty), 1 frame (filled frog) | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Home row + progress |
+| HUD font | Bitmap arcade font, digits + uppercase | *bit5x3*, from the Zigurous Frogger tutorial, by Zigurous (no licence stated) | Score, timer, prompts |
 | SFX | hop, splash, squash, home-filled, round-clear, game-over, timer-low warning | [Pixabay sound effects](https://pixabay.com/sound-effects/), Pixabay Content License | Feedback |
 | Music | 1 short loop (title), 1 short loop (play) | [Pixabay sound effects](https://pixabay.com/sound-effects/), Pixabay Content License | Ambience |
 
 **Licence note:** *Frogger* is a trademark of Konami, and the original arcade sprites and audio are
 copyrighted. Nothing from the 1981 ROM ships in the game. The one exception in this repository is the
 reference image in §2 — that is the original arcade flyer, reproduced here to identify what is being
-studied, and it is not a game asset and is not loaded by the build. All art and audio in this project are either drawn
-by me or taken from CC0 / OFL / Pixabay Content License sources with the licence recorded in the table above, so the build is
-distributable as a portfolio piece. The name "Frogger" is used here as a working title only; a public
-release would ship under an original name.
+studied, and it is not a game asset and is not loaded by the build. Audio comes from Pixabay under the
+Pixabay Content License. The sprites and the *bit5x3* font come from the Zigurous Frogger tutorial
+repository, which does not state a licence — by default that means all rights stay with the author, so
+they are used here for learning and as a non-commercial portfolio piece only. Before any public release
+they must be replaced with self-made or openly licensed art, or used with the author's permission. The
+name "Frogger" is used here as a working title only; a public release would ship under an original name.
 
 **Technical art rules:** Point (no filter) import, no compression, PPU 16 so one sprite cell equals
 one grid cell equals 1 world unit. Single SpriteAtlas for everything in the board. Sorting layers
