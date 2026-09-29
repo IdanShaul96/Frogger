@@ -130,7 +130,7 @@ stateDiagram-v2
 | `startingLives` | How many mistakes a run tolerates | 3 |
 | `laneSpeed[]` | Per-lane speed of vehicles and logs — the main difficulty dial, one value per row | 1.5 – 4.0 |
 | `laneSpacing[]` | Gap between consecutive vehicles/logs in a lane; trades directly against `laneSpeed` — changing one always means re-checking the other | 3 – 6 cells |
-| `platformLength[]` | Cells per log, or turtles per group — how forgiving a river landing is | 2 – 4 |
+| `platformLength[]` | Cells per log, or turtles per group — how forgiving a river landing is | Logs 3 / 4 / 6 cells, turtles 2 – 3 |
 | `turtleSafeTime` | Seconds a turtle group stays surfaced and safe | 5 s |
 | `turtleWarningTime` | Seconds of half-submerged animation before the dive — still safe, this is the telegraph | 1.5 s |
 | `turtleDiveTime` | Seconds fully submerged; the group is open water for this long | 2 s |
@@ -222,7 +222,7 @@ perfectly even pixels.
 |---|---|---|---|
 | Frog | 2 frames (idle, mid-hop) × 4 facings, + 3-frame death | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Player |
 | Vehicles | 4 types (truck, car, tractor, race car), 1 frame each, 2 facings | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Road hazards |
-| Log | 3 lengths (2, 3, 4 cells), 1 frame each | Zigurous Frogger tutorial, by Zigurous (no licence stated) | River platforms |
+| Log | 3 lengths (3, 4, 6 cells), 1 frame each | Zigurous Frogger tutorial, by Zigurous (no licence stated) | River platforms |
 | Turtle | 1 cell, 2-frame paddle loop, 2-frame half-submerged warning, 1 frame fully submerged | Zigurous Frogger tutorial, by Zigurous (no licence stated) | River platforms, in groups of 2–3 |
 | Board background | 1 tiled image: home hedge, river, median, road, start row | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Static backdrop |
 | Home slot marker | 1 frame (empty), 1 frame (filled frog) | Zigurous Frogger tutorial, by Zigurous (no licence stated) | Home row + progress |
