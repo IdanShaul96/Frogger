@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
         _player.Death();
     }
 
+    // Also silences the low-time alarm: death, reaching a home and game over all end the countdown.
     private void StopTimer()
     {
         if (_timerRoutine != null)
@@ -162,6 +163,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(_timerRoutine);
             _timerRoutine = null;
         }
+        _audio.StopTimerLow();
     }
 
     public void Died(bool drowned)

@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _sfxSource;
     private AudioSource _musicSource;
+    private AudioSource _alarmSource;
 
     private void Awake()
     {
@@ -28,6 +29,12 @@ public class AudioManager : MonoBehaviour
         _musicSource = gameObject.AddComponent<AudioSource>();
         _musicSource.playOnAwake = false;
         _musicSource.loop = true;
+
+        // The low-time alarm gets its own source so it can be cut off the moment the countdown stops.
+        // It loops, so it lasts the whole warning window even with a short clip.
+        _alarmSource = gameObject.AddComponent<AudioSource>();
+        _alarmSource.playOnAwake = false;
+        _alarmSource.loop = true;
     }
 
     public void PlayHop() => PlaySfx(hop);
@@ -35,7 +42,15 @@ public class AudioManager : MonoBehaviour
     public void PlayHomeFilled() => PlaySfx(homeFilled);
     public void PlayRoundClear() => PlaySfx(roundClear);
     public void PlayGameOver() => PlaySfx(gameOver);
-    public void PlayTimerLow() => PlaySfx(timerLow);
+    public void StopTimerLow() => _alarmSource.Stop();
+
+    public void PlayTimerLow()
+    {
+        if (timerLow == null) return;
+
+        _alarmSource.clip = timerLow;
+        _alarmSource.Play();
+    }
 
     public void PlayTitleMusic() => PlayMusic(titleMusic);
     public void PlayGameplayMusic() => PlayMusic(gameplayMusic);
